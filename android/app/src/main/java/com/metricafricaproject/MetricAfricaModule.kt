@@ -120,38 +120,4 @@ class MetricAfricaModule(reactContext: ReactApplicationContext): ReactContextBas
         currentActivity?.startActivityForResult(intent, VERIFICATION_REQUEST_CODE)
     }
 
-    @ReactMethod
-    fun askForCameraPermission(promise: Promise){
-        val activity = currentActivity
-        if (activity is PermissionAwareActivity) {
-            permissionPromise = promise
-            activity.requestPermissions(arrayOf(android.Manifest.permission.CAMERA), CAMERA_PERMISSION_REQUEST_CODE, this)
-        }else {
-            permissionPromise?.reject("PERMISSION_ERROR", "Activity is not a PermissionAwareActivity")
-        }
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray): Boolean {
-        when (requestCode) {
-            CAMERA_PERMISSION_REQUEST_CODE -> {
-                // Handle the camera permission result here
-                val granted = grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                if (granted) {
-                    Log.d(TAG, "Camera permission granted")
-                    // Perform action that requires the camera permission
-                    permissionPromise?.resolve("Camera permission granted")
-                } else {
-                    Log.d(TAG, "Camera permission denied")
-                    // Handle the case where permission is denied
-                    permissionPromise?.reject("Camera permission denied")
-                }
-                permissionPromise = null
-                return true
-            }
-            else -> return false
-        }
-    }
-
-
-
 }
