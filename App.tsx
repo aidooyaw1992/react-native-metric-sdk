@@ -20,7 +20,16 @@ import MetricAfricaModule from './MetricAfricaModule';
 
 
 function App(): React.JSX.Element {
+  const CLIENT_KEY = "I0GB6GIe0PEVNRy9D6Ct";
+  const CLIENT_SECRET = "FnZ7VtLwbSH75Zt7UuNCNinJdTmYHvdQb3dZHFNInDMN0";
 
+  async function initVerification(token: string) {
+    MetricAfricaModule.initializeVerification(token)
+  }
+
+  async function initMetricSdk(clientId: string, clientSecret: string) {
+    MetricAfricaModule.initializeMetricAfricaSdk(clientId, clientSecret)
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -29,7 +38,12 @@ function App(): React.JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         contentContainerStyle={styles.container}>
         <Pressable onPress={() => {
-          MetricAfricaModule.askForCameraPermission()
+          MetricAfricaModule.askForCameraPermission().then(() => {
+            initMetricSdk(CLIENT_KEY, CLIENT_SECRET).then(() => {
+              initVerification("13JN7OWUJ")
+            })
+          })
+
         }}>
           <Text>Pressable</Text>
         </Pressable>
