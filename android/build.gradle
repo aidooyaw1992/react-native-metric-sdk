@@ -1,0 +1,42 @@
+buildscript {
+    ext {
+        buildToolsVersion = "34.0.0"
+        minSdkVersion = 24
+        compileSdkVersion = 34
+        targetSdkVersion = 34
+        ndkVersion = "26.1.10909125"
+        kotlinVersion = "1.9.22"
+    }
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url "http://android.metric.africa:8081/artifactory/metric-sdk-sdk"
+            allowInsecureProtocol  true
+            credentials {
+                username =  "sdk1bridge"
+                password = "Axz441234!88!"
+            }
+        }
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle")
+        classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+    }
+}
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url  "http://android.metric.africa:8081/artifactory/metric-sdk-sdk"
+            allowInsecureProtocol true
+            credentials {
+                username = "sdk1bridge"
+                password = "Axz441234!88!"
+            }
+        }
+    }
+}
+apply plugin: "com.facebook.react.rootproject"
