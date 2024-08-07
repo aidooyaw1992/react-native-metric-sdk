@@ -3,7 +3,6 @@ package com.metricafricaproject
 import android.app.Activity
 import android.content.Intent
 import android.util.Log
-import android.content.pm.PackageManager
 import android.graphics.Color
 import com.facebook.react.bridge.BaseActivityEventListener
 import com.facebook.react.bridge.Promise
@@ -27,8 +26,7 @@ class MetricAfricaModule(reactContext: ReactApplicationContext): ReactContextBas
     companion object {
         const val NAME = "MetricAfricaModule"
         private const val TAG = "MetricAfricaModule"
-        private const val CAMERA_PERMISSION_REQUEST_CODE = 1
-        private const val VERIFICATION_REQUEST_CODE = 2
+        private const val VERIFICATION_REQUEST_CODE = 1
     }
 
     private var verificationPromise: Promise? = null
