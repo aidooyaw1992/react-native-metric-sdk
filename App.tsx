@@ -20,8 +20,8 @@ import MetricAfricaModule from './MetricAfricaModule';
 
 
 function App(): React.JSX.Element {
-  const CLIENT_KEY = "I0GB6GIe0PEVNRy9D6Ct";
-  const CLIENT_SECRET = "FnZ7VtLwbSH75Zt7UuNCNinJdTmYHvdQb3dZHFNInDMN0";
+  const CLIENT_KEY = "";
+  const CLIENT_SECRET = "";
 
   async function initVerification(token: string) {
     MetricAfricaModule.initializeVerification(token)
@@ -38,11 +38,11 @@ function App(): React.JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         contentContainerStyle={styles.container}>
         <Pressable onPress={() => {
-          MetricAfricaModule.askForCameraPermission().then(() => {
-            initMetricSdk(CLIENT_KEY, CLIENT_SECRET).then(() => {
-              initVerification("13JN7OWUJ")
-            })
+
+          initMetricSdk(CLIENT_KEY, CLIENT_SECRET).then(() => {
+            initVerification("")
           })
+
 
         }}>
           <Text>Pressable</Text>

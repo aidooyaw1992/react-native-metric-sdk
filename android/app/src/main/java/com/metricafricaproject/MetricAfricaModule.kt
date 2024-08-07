@@ -58,7 +58,7 @@ class MetricAfricaModule(reactContext: ReactApplicationContext): ReactContextBas
                                 Reason.UNAUTHORISED -> "Unauthorized access"
                                 Reason.UNKNOWN -> "Unknown error occurred"
                             }
-                            verificationPromise?.reject(Throwable("VERIFICATION_FAILED", Throwable(errorText)))
+                            verificationPromise?.reject(Throwable(outcome.reason.name,Throwable(errorText)))
                         }
                         is VerificationOutcome.Success -> {
                             verificationPromise?.resolve("Verification successful")
