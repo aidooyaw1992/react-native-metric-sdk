@@ -10,8 +10,7 @@ import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
-import com.facebook.react.modules.core.PermissionAwareActivity
-import com.facebook.react.modules.core.PermissionListener
+
 import com.metric.sdk.init.BasicMetricSettings
 import com.metric.sdk.init.ClientAuthenticator
 import com.metric.sdk.init.Environment
@@ -23,15 +22,15 @@ import com.metric.sdk.ui.sdklaucher.Reason
 import com.metric.sdk.ui.sdklaucher.VerificationOutcome
 
 
-class MetricAfricaModule(reactContext: ReactApplicationContext): ReactContextBaseJavaModule(reactContext),
-    PermissionListener {
+class MetricAfricaModule(reactContext: ReactApplicationContext): ReactContextBaseJavaModule(reactContext)
+{
     companion object {
         const val NAME = "MetricAfricaModule"
         private const val TAG = "MetricAfricaModule"
         private const val CAMERA_PERMISSION_REQUEST_CODE = 1
         private const val VERIFICATION_REQUEST_CODE = 2
     }
-    private var permissionPromise: Promise? = null
+
     private var verificationPromise: Promise? = null
     private var metricInitialized: Boolean = false
     override fun getName(): String {
